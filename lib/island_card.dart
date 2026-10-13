@@ -20,7 +20,13 @@ class IslandCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Expanded(child: Image.asset(island.image, fit: BoxFit.cover)),
+            Expanded(
+              child: Image.asset(
+                island.image,
+                fit: BoxFit.cover,
+                excludeFromSemantics: true, // the name below already says it
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(8),
               child: Text(island.name, textAlign: TextAlign.center),

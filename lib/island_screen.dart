@@ -25,7 +25,12 @@ class IslandScreen extends StatelessWidget {
       appBar: AppBar(title: Text(island.name)),
       body: ListView(
         children: [
-          Image.asset(island.image, height: 240, fit: BoxFit.cover),
+          Image.asset(
+            island.image,
+            height: 240,
+            fit: BoxFit.cover,
+            semanticLabel: 'Fotografia da ilha ${island.name}',
+          ),
           const SizedBox(height: 16),
           const DaysRow(),
         ],

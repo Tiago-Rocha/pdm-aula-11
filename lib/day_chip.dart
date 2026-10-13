@@ -14,18 +14,26 @@ class DayChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    return SizedBox(
-      width: 72,
-      child: Card(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(forecast.weekday, style: textTheme.labelLarge),
-            const SizedBox(height: 4),
-            Icon(forecast.type.icon, size: 24),
-            const SizedBox(height: 4),
-            Text('${forecast.tMax.round()}°', style: textTheme.titleMedium),
-          ],
+    // read as one sentence, not as three loose pieces
+    return Semantics(
+      label:
+          '${forecast.weekday}, ${forecast.type.description}, '
+          'máxima ${forecast.tMax.round()} graus',
+      child: ExcludeSemantics(
+        child: SizedBox(
+          width: 72,
+          child: Card(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(forecast.weekday, style: textTheme.labelLarge),
+                const SizedBox(height: 4),
+                Icon(forecast.type.icon, size: 24),
+                const SizedBox(height: 4),
+                Text('${forecast.tMax.round()}°', style: textTheme.titleMedium),
+              ],
+            ),
+          ),
         ),
       ),
     );

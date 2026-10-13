@@ -268,6 +268,7 @@ class _IslandsGridState extends State<IslandsGrid> {
                   ? null
                   : IconButton(
                       icon: const Icon(Icons.clear),
+                      tooltip: 'Limpar pesquisa', // read by the screen reader
                       onPressed: () => setState(_search.clear),
                     ),
             ),
